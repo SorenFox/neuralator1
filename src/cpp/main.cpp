@@ -18,7 +18,7 @@ int main() {
 
 	trainOut.push_back(1);
 	trainOut.push_back(0);
-	trainOut.push_back(0);
+	trainOut.push_back(1);
 
 	while(true) {
 		std::cin >> usrInput;
@@ -28,7 +28,7 @@ int main() {
 			net.info();
 		} else if (usrInput == "exit") {
 			return 0;
-		} else if (usrInput == "train") {
+		} else if (usrInput == "train100") {
 			for (int i=0; i < 100; i++) {
 				net.train(trainIn, trainOut);
 				net.calculate(trainIn, results);
@@ -38,10 +38,17 @@ int main() {
 					// avgError += abs(results[i] - trainOut[i]);
 					std::cout << std::fixed << results[i] << std::endl;
 				}
-				avgError /= results.size();
-				//std::cout << std::fixed << avgError << std::endl;
 			}
 			std::cout << "done" << std::endl;
+		} else if (usrInput == "train") {
+			net.train(trainIn, trainOut);
+			net.calculate(trainIn, results);
+			// std::cout << std::fixed << results.size() << std::endl;
+			avgError = 0;
+			for (int i=0; i < results.size(); i++) {
+				// avgError += abs(results[i] - trainOut[i]);
+				std::cout << std::fixed << results[i] << std::endl;
+			}
 		}
 	}
 	

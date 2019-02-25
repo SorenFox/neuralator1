@@ -60,15 +60,8 @@ void network::train(std::vector<double> trainInputs, std::vector<double> trainOu
 
         if (avgError1 <= avgError2 && avgError1 <= avgError3) {
           synapses[i][j]->setWeight(k, synapses[i][j]->getWeights()[k] + 0.01); //set to original value
-          std::cout << "Error1 was less" << std::endl;
-          std::cout << avgError1 << std::endl;
         } else if (avgError2 <= avgError1 && avgError2 <= avgError3) {
           synapses[i][j]->setWeight(k, synapses[i][j]->getWeights()[k] + 0.02); //set to higher value
-          std::cout << "Error2 was less" << std::endl;
-          std::cout << avgError2 << std::endl;
-        } else {
-          std::cout << "Error3 was less" << std::endl;
-          std::cout << avgError3 << std::endl;
         } //else do nothing as weight has already been modified
 
       }
